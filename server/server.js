@@ -13,5 +13,8 @@ app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
+loginRoute = require("./routes/login.js");
+app.use("/login", loginRoute);
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Serwer działa na porcie ${PORT}`));
