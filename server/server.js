@@ -1,6 +1,7 @@
 const express = require("express");
 const dotenv = require("dotenv");
 const cors = require("cors");
+const db = require("./config/db");
 
 dotenv.config();
 
@@ -15,6 +16,9 @@ app.get("/", (req, res) => {
 
 loginRoute = require("./routes/login.js");
 app.use("/login", loginRoute);
+
+newUserRoute = require("./routes/newUser.js");
+app.use("/newUser", newUserRoute);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Serwer działa na porcie ${PORT}`));
