@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Nowy uzytkownik</h1>
+    <form action="newUser/submit" method="POST">
+      <label for="name">Enter your username:</label>
+      <input
+        type="text"
+        id="username"
+        name="username"
+        placeholder="username"
+        required
+      />
+      <label for="password">Enter your password</label>
+      <input
+        type="password"
+        name="password"
+        id="password"
+        placeholder="password"
+        required
+      />
+      <label for="role">Enter your role</label>
+      <label for="role">user</label>
+      <input type="radio" name="role" id="role" value="user" required />
+      <label for="role">admin</label>
+      <input type="radio" name="role" id="role" value="admin" required />
+
+      <button type="submit">Submit</button>
+    </form>
+  </body>
+</html>
