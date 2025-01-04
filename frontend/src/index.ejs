@@ -1,0 +1,223 @@
+<!-- filepath: /home/majkser/studia/technikiWWW/hala-rezerwacje/frontend/src/index.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sports Hall Reservation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-50">
+    <!-- Navbar -->
+    <nav class="bg-blue-600 text-white shadow-lg">
+      <div
+        class="container mx-auto px-6 py-4 flex justify-between items-center"
+      >
+        <a href="/" class="text-2xl font-bold">SportHall</a>
+        <div class="space-x-4">
+          <a href="/login" class="hover:text-gray-200">Login</a>
+          <a
+            href="/newUser"
+            class="bg-white text-blue-600 px-4 py-2 rounded-lg hover:bg-gray-100"
+            >Sign Up</a
+          >
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="bg-blue-700 text-white py-20">
+      <div class="container mx-auto px-6 text-center">
+        <h1 class="text-5xl font-bold mb-4">Book Your Sports Hall</h1>
+        <p class="text-xl mb-8">
+          Easy and quick reservations for your sports activities
+        </p>
+        <a
+          href="/halls"
+          class="bg-white text-blue-700 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100"
+        >
+          Book Now
+        </a>
+      </div>
+    </div>
+
+    <!-- Available Halls Section -->
+    <div class="container mx-auto px-6 py-16">
+      <h2 class="text-3xl font-bold text-center mb-12">Available Halls</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Hall Card 1 -->
+        <div class="bg-white rounded-lg shadow-md overflow-hidden">
+          <div class="bg-blue-600 h-64 flex items-center justify-center">
+            <img
+              src="./imgs/hala.jpg"
+              alt="Main Sports Hall"
+              class="w-full h-full"
+            />
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-semibold mb-2">Main Sports Hall</h3>
+            <p class="text-gray-600 mb-4">
+              Large multi-purpose sports hall perfect for basketball,
+              volleyball, and indoor football.
+            </p>
+            <a
+              href="/halls/1"
+              class="text-blue-600 font-semibold hover:text-blue-800"
+              >View Details →</a
+            >
+          </div>
+        </div>
+
+        <!-- Hall Card 2 -->
+        <div class="bg-white rounded-lg shadow-md overflow-hidden">
+          <div class="bg-blue-600 h-64 flex items-center justify-center">
+            <img
+              src="./imgs/fitness.png"
+              alt="Training Hall"
+              class="w-full h-full"
+            />
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-semibold mb-2">Training Hall</h3>
+            <p class="text-gray-600 mb-4">
+              Medium-sized hall ideal for fitness classes, martial arts, and
+              group training sessions.
+            </p>
+            <a
+              href="/halls/2"
+              class="text-blue-600 font-semibold hover:text-blue-800"
+              >View Details →</a
+            >
+          </div>
+        </div>
+
+        <!-- Hall Card 3 -->
+        <div class="bg-white rounded-lg shadow-md overflow-hidden">
+          <div class="bg-blue-600 h-64 flex items-center justify-center">
+            <img
+              src="./imgs/yoga.jpg"
+              alt="group exercise room"
+              class="w-full h-full"
+            />
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-semibold mb-2">Group Exercise Room</h3>
+            <p class="text-gray-600 mb-4">
+              Intimate space perfect for yoga, pilates, and small group
+              activities.
+            </p>
+            <a
+              href="/halls/3"
+              class="text-blue-600 font-semibold hover:text-blue-800"
+              >View Details →</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="bg-gray-100 py-16">
+      <div class="container mx-auto px-6">
+        <h2 class="text-3xl font-bold text-center mb-12">Why Choose Us</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- Quick Booking Feature -->
+          <div class="text-center">
+            <div
+              class="bg-blue-600 text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4"
+            >
+              <svg
+                class="w-8 h-8"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                ></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Quick Booking</h3>
+            <p class="text-gray-600">
+              Easy and fast reservation process available 24/7
+            </p>
+          </div>
+
+          <!-- Modern Facilities Feature -->
+          <div class="text-center">
+            <div
+              class="bg-blue-600 text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4"
+            >
+              <svg
+                class="w-8 h-8"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+                ></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Modern Facilities</h3>
+            <p class="text-gray-600">
+              Well-maintained halls with premium equipment
+            </p>
+          </div>
+
+          <!-- Flexible Hours Feature -->
+          <div class="text-center">
+            <div
+              class="bg-blue-600 text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4"
+            >
+              <svg
+                class="w-8 h-8"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                ></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Flexible Hours</h3>
+            <p class="text-gray-600">
+              Available from early morning till late evening
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+      <div class="container mx-auto px-6">
+        <div class="flex flex-col md:flex-row justify-between">
+          <div class="mb-6 md:mb-0">
+            <h3 class="text-xl font-semibold mb-4">Contact Us</h3>
+            <p>Email: contact@sporthall.com</p>
+            <p>Phone: +48 123 456 789</p>
+          </div>
+          <div>
+            <h3 class="text-xl font-semibold mb-4">Follow Us</h3>
+            <div class="flex space-x-4">
+              <a href="#" class="hover:text-gray-300">Facebook</a>
+              <a href="#" class="hover:text-gray-300">Instagram</a>
+              <a href="#" class="hover:text-gray-300">Twitter</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
