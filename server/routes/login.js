@@ -7,7 +7,7 @@ router.use(express.json());
 router.use(express.urlencoded({ extended: true }));
 
 router.get("/", (req, res) => {
-  res.sendFile("login.html", { root: "./frontend" });
+  res.sendFile("login.html", { root: "./frontend/src" });
 });
 
 router.post("/submit", async (req, res) => {

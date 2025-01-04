@@ -6,7 +6,7 @@ router.use(express.json());
 router.use(express.urlencoded({ extended: true }));
 
 router.get("/", (req, res) => {
-  res.sendFile("newUser.html", { root: "./frontend" });
+  res.sendFile("newUser.html", { root: "./frontend/src" });
 });
 
 router.post("/submit", async (req, res) => {
