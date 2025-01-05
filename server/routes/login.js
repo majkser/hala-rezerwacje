@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const db = require("../config/db");
 bcrypt = require("bcrypt");
+const session = require("express-session");
 
 router.use(express.json());
 router.use(express.urlencoded({ extended: true }));
@@ -32,14 +33,13 @@ router.post("/submit", async (req, res) => {
       return res.status(401).send("Nieprawidłowa nazwa użytkownika lub hasło");
     }
 
-    res.send("Zalogowano pomyślnie");
-    res.status(200).json({
-      user: {
-        id: user.id,
-        username: user.username,
-        role: user.role,
-      },
-    });
+    req.session.user = {
+      id: user.id,
+      username: user.username,
+      role: user.role,
+    };
+
+    res.redirect("/logged");
   } catch (err) {
     console.error(err);
     res.status(500).send("Błąd serwera podczas logowania");
