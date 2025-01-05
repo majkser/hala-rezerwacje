@@ -44,5 +44,13 @@ app.get("/logout", (req, res) => {
   res.redirect("/");
 });
 
+app.get("/halls", (req, res) => {
+  if (req.session.user) {
+    res.render("../frontend/src/booking", req.session.user);
+  } else {
+    res.redirect("/login");
+  }
+});
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Serwer działa na porcie ${PORT}`));
