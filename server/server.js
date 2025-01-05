@@ -39,5 +39,10 @@ app.get("/logged", (req, res) => {
   }
 });
 
+app.get("/logout", (req, res) => {
+  req.session.destroy();
+  res.redirect("/");
+});
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Serwer działa na porcie ${PORT}`));
