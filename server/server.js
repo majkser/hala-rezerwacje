@@ -52,5 +52,44 @@ app.get("/halls", (req, res) => {
   }
 });
 
+app.get("/fetchTimes/:hallID/:date", async (req, res) => {
+  try {
+    const hallID = req.params.hallID;
+    const date = req.params.date;
+
+    const [reservations] = await db.execute(
+      `SELECT reservation_time_start, reservation_time_end 
+       FROM reservations WHERE hall_id = ? AND reservation_date = ?`,
+      [hallID, date]
+    );
+
+    console.log("Reservations from DB:", reservations);
+
+    const timeSlots = generateTimeSlots(reservations);
+
+    console.log("Generated time slots:", timeSlots);
+    res.json(timeSlots);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Błąd serwera podczas pobierania dostępnych godzin");
+  }
+});
+
+function generateTimeSlots(reservations) {
+  const timeSlots = [];
+
+  for (let i = 8; i < 22; i++) {
+    const time = i;
+    const available = !reservations.some((r) => {
+      const start = r.reservation_time_start.split(":")[0];
+      const end = r.reservation_time_end.split(":")[0];
+      return time >= start && time < end;
+    });
+    timeSlots.push({ time, available });
+  }
+
+  return timeSlots;
+}
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Serwer działa na porcie ${PORT}`));
