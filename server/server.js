@@ -63,11 +63,8 @@ app.get("/fetchTimes/:hallID/:date", async (req, res) => {
       [hallID, date]
     );
 
-    console.log("Reservations from DB:", reservations);
-
     const timeSlots = generateTimeSlots(reservations);
 
-    console.log("Generated time slots:", timeSlots);
     res.json(timeSlots);
   } catch (err) {
     console.error(err);
