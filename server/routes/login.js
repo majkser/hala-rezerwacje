@@ -1,8 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const db = require("../config/db");
-bcrypt = require("bcrypt");
-const session = require("express-session");
 
 router.use(express.json());
 router.use(express.urlencoded({ extended: true }));
