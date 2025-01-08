@@ -81,9 +81,7 @@ document.querySelector("form").addEventListener("submit", async (e) => {
     alert(resData.message);
 
     if (resData.success) {
-      setTimeout(() => {
-        window.location.href = resData.redirectURL;
-      }, 5000);
+      window.location.href = resData.redirectURL;
     }
   } catch (err) {
     console.error(err);

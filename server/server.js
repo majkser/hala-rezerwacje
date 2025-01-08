@@ -97,8 +97,6 @@ app.post("/booking/submit", async (req, res) => {
     const timeEnd = req.body.timeEnd;
     const userID = req.session.user.id;
 
-    console.log(hallID, date, timeStart, timeEnd, userID);
-
     if (!hallID || !date || !timeStart || !timeEnd) {
       return res.status(400).send("Nie podano wszystkich wymaganych danych");
     } else {
@@ -108,7 +106,13 @@ app.post("/booking/submit", async (req, res) => {
       );
 
       res.status(201).json({
-        message: `Rezerwacja została dodana pomyślnie, numer rezerwacji: ${newReservation.insertId}`,
+        message:
+          `SUCCESS :\n\n` +
+          `- Number of reservation: ${newReservation.insertId}\n` +
+          `- Date: ${date}\n` +
+          `- Start hour: ${timeStart}\n` +
+          `- End hour: ${timeEnd}\n\n` +
+          `After clicking OK you will be redirected to the main page.`,
         id: newReservation.insertId,
         success: true,
         redirectURL: req.session.user ? "/logged" : "/",
