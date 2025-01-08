@@ -110,6 +110,7 @@ app.post("/booking/submit", async (req, res) => {
       res.status(201).json({
         message: `Rezerwacja została dodana pomyślnie, numer rezerwacji: ${newReservation.insertId}`,
         id: newReservation.insertId,
+        success: true,
         redirectURL: req.session.user ? "/logged" : "/",
       });
     }
