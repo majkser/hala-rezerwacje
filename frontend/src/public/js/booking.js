@@ -14,9 +14,9 @@ async function fetchTimes() {
     timeSelect.innerHTML = slots
       .map(
         (slot) =>
-          `<option value="${slot.time}" ${!slot.available ? "disabled" : ""}>${
-            slot.time + ":00"
-          }${!slot.available ? " (Booked)" : ""}</option>`
+          `<option value="${slot.time + ":00"}" ${
+            !slot.available ? "disabled" : ""
+          }>${slot.time + ":00"}${!slot.available ? " (Booked)" : ""}</option>`
       )
       .join("");
 
@@ -52,3 +52,40 @@ async function fetchEndTimes() {
     console.error(err);
   }
 }
+
+document.querySelector("form").addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  try {
+    const formData = new FormData(e.target);
+    const data = {
+      hall_id: formData.get("hall_id"),
+      date: formData.get("date"),
+      timeStart: formData.get("timeStart"),
+      timeEnd: formData.get("timeEnd"),
+    };
+
+    const res = await fetch("/booking/submit", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+
+    if (!res.ok) {
+      throw new Error(`HTTP error! status: ${res.status}`);
+    }
+
+    const resData = await res.json();
+    alert(resData.message);
+
+    if (resData.success) {
+      setTimeout(() => {
+        window.location.href = resData.redirectURL;
+      }, 5000);
+    }
+  } catch (err) {
+    console.error(err);
+  }
+});

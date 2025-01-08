@@ -13,6 +13,7 @@ app.set("view engine", "ejs");
 app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "../frontend/src/public")));
+app.use(express.urlencoded({ extended: true }));
 app.use(
   session({
     secret: process.env.JWT_SECRET,
@@ -87,6 +88,36 @@ function generateTimeSlots(reservations) {
 
   return timeSlots;
 }
+
+app.post("/booking/submit", async (req, res) => {
+  try {
+    const hallID = req.body.hall_id;
+    const date = req.body.date;
+    const timeStart = req.body.timeStart;
+    const timeEnd = req.body.timeEnd;
+    const userID = req.session.user.id;
+
+    console.log(hallID, date, timeStart, timeEnd, userID);
+
+    if (!hallID || !date || !timeStart || !timeEnd) {
+      return res.status(400).send("Nie podano wszystkich wymaganych danych");
+    } else {
+      const [newReservation] = await db.execute(
+        `INSERT INTO reservations (user_id, hall_id, reservation_date, reservation_time_start, reservation_time_end) VALUES (?, ?, ?, ?, ?)`,
+        [userID, hallID, date, timeStart, timeEnd]
+      );
+
+      res.status(201).json({
+        message: `Rezerwacja została dodana pomyślnie, numer rezerwacji: ${newReservation.insertId}`,
+        id: newReservation.insertId,
+        redirectURL: req.session.user ? "/logged" : "/",
+      });
+    }
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Błąd serwera podczas rezerwacji");
+  }
+});
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Serwer działa na porcie ${PORT}`));
