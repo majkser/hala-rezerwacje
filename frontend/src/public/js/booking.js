@@ -3,6 +3,10 @@ async function fetchTimes() {
     const hall = document.getElementById("hallSelect");
     hall.addEventListener("change", fetchTimes);
 
+    const today = new Date();
+    const todayTime = today.getHours();
+    const todayDate = today.toISOString().split("T")[0];
+
     const hallID = document.getElementById("hallSelect").value;
     const date = document.getElementById("dateSelect").value;
 
@@ -19,6 +23,14 @@ async function fetchTimes() {
           }>${slot.time + ":00"}${!slot.available ? " (Booked)" : ""}</option>`
       )
       .join("");
+
+    if (date === todayDate) {
+      for (let i = 8; i < todayTime + 1; i++) {
+        const option = timeSelect.querySelector(`option[value="${i + ":00"}"]`);
+        option.disabled = true;
+        option.innerHTML = `${i}:00 (Passed)`;
+      }
+    }
 
     timeSelect.innerHTML =
       `<option value="" disabled selected>Select a time</option>` +

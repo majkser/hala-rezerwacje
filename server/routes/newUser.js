@@ -37,10 +37,13 @@ router.post("/submit", async (req, res) => {
       [username, password, role]
     );
 
-    res.status(201).json({
-      message: "Użytkownik został dodany pomyślnie",
+    req.session.user = {
       id: newUser.insertId,
-    });
+      username: username,
+      role: role,
+    };
+
+    res.status(201).redirect("/logged");
   } catch (err) {
     console.error(err);
     res.status(500).send("Błąd serwera podczas dodawania nowego użytkownika");
