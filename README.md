@@ -21,7 +21,7 @@ Web application for managing sports hall reservations with user authentication a
 
 1. Clone and install:
 ```bash
-git clone https://github.com/yourusername/hala-rezerwacje.git
+git clone https://github.com/majkser/hala-rezerwacje.git
 cd hala-rezerwacje
 npm install
 ```
